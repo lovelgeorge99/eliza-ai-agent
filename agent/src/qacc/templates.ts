@@ -90,3 +90,50 @@ Example responses:
 
 {{recentMessages}} Extract filter conditions from the most recent message.
 Respond with a JSON markdown block containing the conditions array.`;
+
+export const scoreProjectTemplate = `You are an AI evaluation agent tasked with scoring and comparing projects based on the following criteria:
+1. Runway (longer is better)
+2. Social Media Reach (higher is better)
+3. Token Launched (1 if not launched, 0 if launched)
+
+For each project, calculate a score between 0 and 1 using the following formula:
+Total Score = (Runway Score * 0.2) + (Social Media Score * 0.15) + (Token Launched Score * 0.1)
+
+### Instructions:
+1. **Runway Score**:
+   - "1 to 6 months" → 0.33
+   - "6 to 12 months" → 0.66
+   - "More than 12 months" → 1.0
+
+2. **Social Media Score**:
+   - "10k to 50k" → 1.0
+   - "3k to 10k" → 0.66
+   - "less than 3k" → 0.33
+
+3. **Token Launched Score**:
+   - "Yes, provide details" → 0
+   - "No, we have not launched a token" → 1
+
+### Input:
+You will receive a project's data in the following format:
+{
+  "project_name": "Example Project",
+  "runway": "6 to 12 months",
+  "socialMedia": "10k to 50k",
+  "tokenLaunched": "No, we have not launched a token"
+}
+
+### Output:
+Calculate the scores and return them in JSON format. Example response:
+\\\json
+{
+  "project_name": "Example Project",
+  "runway_score": 0.66,
+  "socialMedia_score": 1.0,
+  "tokenLaunched_score": 1,
+  "total_score": 0.866
+}
+\\\
+
+here is the the data {{projectData}}
+`;

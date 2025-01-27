@@ -62,9 +62,14 @@ export const getAllProjects: Action = {
             elizaLogger.success("Successfully fetched all QACC projects");
 
             // Extract project names
-            const projectNames = allProjects.map(
-                (project) => project["Project name"]
-            );
+            // const projectNames = allProjects.map(
+            //     (project) => project["Project name"]
+            // );
+
+            const projects = allProjects.map((project, index) => ({
+                index: index,
+                project_name: project["Project name"],
+            }));
 
             // Format response based on request type
             let responseText = "";
@@ -80,7 +85,7 @@ export const getAllProjects: Action = {
                     content: {
                         action: "GET_ALL_QACC_PROJECTS",
                         total: allProjects.length,
-                        projectNames: projectNames,
+                        projects: projects,
                     },
                 });
 

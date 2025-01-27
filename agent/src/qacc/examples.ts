@@ -258,3 +258,104 @@ export const getFilteredProjectsExamples: ActionExample[][] = [
         },
     ],
 ];
+
+export const getScoreProjectsExamples: ActionExample[][] = [
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Can you show me the top 5 projects?",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll score and rank the top 5 QACC projects for you.",
+                action: "SCORE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "Top 5 QACC Projects ranked by performance score:",
+                content: {
+                    scoredProjects: [
+                        { name: "QACC-Arbitrage-Bot", overallScore: 0.85 },
+                        { name: "QACC Dashboard", overallScore: 0.79 },
+                        { name: "QACC Gurvez", overallScore: 0.72 },
+                        { name: "QACC Risk Manager", overallScore: 0.68 },
+                        { name: "QACC Analytics", overallScore: 0.65 },
+                    ],
+                },
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "I want to know which projects are performing best",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll analyze and rank the QACC projects for you.",
+                action: "SCORE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "Top performing QACC projects based on comprehensive scoring:",
+                content: {
+                    scoredProjects: [
+                        {
+                            name: "QACC-Arbitrage-Bot",
+                            overallScore: 0.85,
+                            fieldScores: {
+                                burn_rate: { normalizedScore: 0.9 },
+                                social_media_followers: {
+                                    normalizedScore: 0.8,
+                                },
+                            },
+                        },
+                    ],
+                },
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Which projects have the best funding and team size?",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll score projects focusing on funding and team metrics.",
+                action: "SCORE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "Top projects ranked by funding and team size:",
+                content: {
+                    scoredProjects: [
+                        {
+                            name: "QACC Dashboard",
+                            overallScore: 0.82,
+                            fieldScores: {
+                                funding: { normalizedScore: 0.95 },
+                                team_size: { normalizedScore: 0.9 },
+                            },
+                        },
+                    ],
+                },
+            },
+        },
+    ],
+];

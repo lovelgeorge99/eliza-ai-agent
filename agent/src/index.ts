@@ -105,6 +105,7 @@ import { getProjectDetail } from "./qacc/actions/getProjectDetail";
 import { getProjectNameProvider } from "./qacc/providers/getProjectNameProvider";
 import { getAllProjects } from "./qacc/actions/getAllProjects";
 import { getFilteredProjects } from "./qacc/actions/getFilteredProjects";
+import { scoreQACCProjects } from "./qacc/actions/scoreQaccProject";
 
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename); // get the name of the directory
@@ -883,7 +884,12 @@ export async function createAgent(
         //     getSecret(character, "QUAI_PRIVATE_KEY") ? quaiPlugin : null,
         // ].filter(Boolean),
         providers: [getProjectNameProvider],
-        actions: [getProjectDetail, getAllProjects, getFilteredProjects],
+        actions: [
+            getProjectDetail,
+            getAllProjects,
+            getFilteredProjects,
+            scoreQACCProjects,
+        ],
         services: [],
         managers: [],
         cacheManager: cache,
