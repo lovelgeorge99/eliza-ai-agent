@@ -12,7 +12,6 @@ import {
 import { getAllProjectsTemplate } from "../templates";
 import { getAllQACCProjectsExamples } from "../examples";
 import { fetchAllProjects } from "../services";
-import { actions } from "@elizaos/plugin-bootstrap";
 
 export const getAllProjects: Action = {
     name: "GET_ALL_QACC_PROJECTS",

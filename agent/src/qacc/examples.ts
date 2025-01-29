@@ -359,3 +359,111 @@ export const getScoreProjectsExamples: ActionExample[][] = [
         },
     ],
 ];
+
+export const compareQACCProjectsExamples: ActionExample[][] = [
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Can you compare all QACC projects with each other?",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll analyze and compare all QACC projects in pairs.",
+                action: "COMPARE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I've completed the project comparisons. QACC-Arbitrage-Bot shows strong metrics in burn rate and runway, while QACC Dashboard excels in user engagement. The Analytics Platform stands out for its comprehensive documentation and development progress.",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Which QACC projects are performing better compared to others?",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll conduct a comparative analysis of all QACC projects.",
+                action: "COMPARE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "After comparing all projects: The QACC Dashboard shows superior metrics in community engagement and deployment status. QACC-Arbitrage-Bot leads in financial efficiency, while the Analytics Platform demonstrates strong technical implementation. Would you like specific details about any comparison?",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Run a comparison analysis of all QACC projects",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll perform a detailed comparison analysis of all QACC projects.",
+                action: "COMPARE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "Comparison analysis complete. Key findings: QACC Dashboard leads in user adoption and community metrics, QACC-Arbitrage-Bot excels in runway and burn rate efficiency, and the Analytics Platform shows strength in documentation and technical implementation. The analysis included 3 head-to-head comparisons.",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Evaluate and rank all QACC projects against each other",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll evaluate all QACC projects through paired comparisons.",
+                action: "COMPARE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "Based on paired comparisons: The QACC Dashboard ranks highest overall due to its strong community metrics and live deployment status. QACC-Arbitrage-Bot follows closely with excellent financial metrics, and the Analytics Platform shows promising potential with its comprehensive documentation. All projects demonstrated unique strengths in different areas.",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Show me how QACC projects stack up against each other",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll analyze how each QACC project compares to the others.",
+                action: "COMPARE_QACC_PROJECTS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "After comparing the projects: Each shows distinct advantages - QACC Dashboard leads in deployment and user base, QACC-Arbitrage-Bot in financial efficiency, and the Analytics Platform in technical robustness. The comparison revealed complementary strengths across the QACC ecosystem.",
+            },
+        },
+    ],
+];
