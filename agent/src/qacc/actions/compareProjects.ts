@@ -11,7 +11,10 @@ import {
 } from "@elizaos/core";
 import { compareQACCProjectsExamples } from "../examples";
 import { fetchAllProjects } from "../services";
-import { generateCompareTemplate } from "../helpers/projectHelper";
+import {
+    generateCompareTemplate,
+    generateCompareTemplateTest,
+} from "../helpers/projectHelper";
 
 // Helper function to generate random pairs
 function generateRandomPairs(projects: any[]): [any, any][] {
@@ -76,73 +79,9 @@ export const compareProjectsAction: Action = {
             const projectPairs = generateRandomPairs(allProjects);
             const comparisons = await Promise.all(
                 projectPairs.map(async (pair, index) => {
-                    const firstProject = {
-                        "Project name": pair[0]["Project name"],
-                        "Project brief": pair[0]["Project brief"],
-                        "Project more info": pair[0]["Project more info"],
-                        "Has your project already launched a token?":
-                            pair[0][
-                                "Has your project already launched a token?"
-                            ],
-                        "How would you describe the stage of this project?":
-                            pair[0][
-                                "How would you describe the stage of this project?"
-                            ],
-                        "Has your project already been deployed on Polygon zkEVM?":
-                            pair[0][
-                                "Has your project already been deployed on Polygon zkEVM?"
-                            ],
-                        "Is your project already deployed on, or will it be deployed on, other chains?":
-                            pair[0][
-                                "Is your project already deployed on, or will it be deployed on, other chains?"
-                            ],
-                        "What is your current revenue?":
-                            pair[0]["What is your current revenue?"],
-                        "How much have you already raised for this project?":
-                            pair[0][
-                                "How much have you already raised for this project?"
-                            ],
-                        "What is your monthly burn rate?":
-                            pair[0]["What is your monthly burn rate?"],
-                        "What is your current financial runway?":
-                            pair[0]["What is your current financial runway?"],
-                    };
-
-                    const secondProject = {
-                        "Project name": pair[1]["Project name"],
-                        "Project brief": pair[1]["Project brief"],
-                        "Project more info": pair[1]["Project more info"],
-                        "Has your project already launched a token?":
-                            pair[1][
-                                "Has your project already launched a token?"
-                            ],
-                        "How would you describe the stage of this project?":
-                            pair[1][
-                                "How would you describe the stage of this project?"
-                            ],
-                        "Has your project already been deployed on Polygon zkEVM?":
-                            pair[1][
-                                "Has your project already been deployed on Polygon zkEVM?"
-                            ],
-                        "Is your project already deployed on, or will it be deployed on, other chains?":
-                            pair[1][
-                                "Is your project already deployed on, or will it be deployed on, other chains?"
-                            ],
-                        "What is your current revenue?":
-                            pair[1]["What is your current revenue?"],
-                        "How much have you already raised for this project?":
-                            pair[1][
-                                "How much have you already raised for this project?"
-                            ],
-                        "What is your monthly burn rate?":
-                            pair[1]["What is your monthly burn rate?"],
-                        "What is your current financial runway?":
-                            pair[1]["What is your current financial runway?"],
-                    };
-
-                    const template = generateCompareTemplate(
-                        firstProject,
-                        secondProject
+                    const template = generateCompareTemplateTest(
+                        pair[0],
+                        pair[1]
                     );
 
                     try {
@@ -157,9 +96,9 @@ export const compareProjectsAction: Action = {
                         });
                         console.log(
                             "Compared " +
-                                firstProject["Project name"] +
+                                pair[0]["Project name"] +
                                 " with " +
-                                secondProject["Project name"]
+                                pair[1]["Project name"]
                         );
                         console.log(analysisResponse);
 
@@ -167,9 +106,9 @@ export const compareProjectsAction: Action = {
                     } catch (e) {
                         console.log(
                             "Error ",
-                            firstProject["Project name"] +
+                            pair[0]["Project name"] +
                                 " " +
-                                secondProject["Project name"]
+                                pair[1]["Project name"]
                         );
                     }
                 })
@@ -180,7 +119,7 @@ export const compareProjectsAction: Action = {
                     text: `Completed ${projectPairs.length} project comparisons.`,
                     content: {
                         action: "COMPARE_QACC_PROJECTS",
-                        total_comparisons: projectPairs.length,
+                        total_comparisons: projectsScored.length,
                         projectsCompared: projectsScored,
                     },
                 });
