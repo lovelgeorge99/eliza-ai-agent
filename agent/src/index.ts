@@ -107,6 +107,7 @@ import { getAllProjects } from "./qacc/actions/getAllProjects";
 import { getFilteredProjects } from "./qacc/actions/getFilteredProjects";
 import { scoreQACCProjects } from "./qacc/actions/scoreQaccProject";
 import { compareProjectsAction } from "./qacc/actions/compareProjects";
+import { readCSVFile } from "./qacc/actions/readCSV";
 
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename); // get the name of the directory
@@ -891,6 +892,7 @@ export async function createAgent(
             getFilteredProjects,
             scoreQACCProjects,
             compareProjectsAction,
+            readCSVFile,
         ],
         services: [],
         managers: [],

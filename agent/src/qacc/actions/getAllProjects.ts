@@ -8,6 +8,7 @@ import {
     Memory,
     ModelClass,
     State,
+    Content,
 } from "@elizaos/core";
 import { getAllProjectsTemplate } from "../templates";
 import { getAllQACCProjectsExamples } from "../examples";
@@ -41,6 +42,7 @@ export const getAllProjects: Action = {
         if (!state) {
             state = (await runtime.composeState(message)) as State;
         }
+
         state = await runtime.updateRecentMessageState(state);
 
         // state -> context
@@ -56,8 +58,16 @@ export const getAllProjects: Action = {
             modelClass: ModelClass.SMALL,
         });
 
+        console.log(content);
+
         try {
-            const allProjects = await fetchAllProjects();
+            let allProjects = [];
+            if (runtime.cacheManager.get("currentCSVData")) {
+                allProjects = await runtime.cacheManager.get("currentCSVData");
+                elizaLogger.success("Got data from cache Manager");
+            } else {
+                allProjects = await fetchAllProjects();
+            }
             elizaLogger.success("Successfully fetched all QACC projects");
 
             // Extract project names
@@ -65,7 +75,7 @@ export const getAllProjects: Action = {
             //     (project) => project["Project name"]
             // );
 
-            const projects = allProjects.map((project, index) => ({
+            const projects = allProjects?.map((project, index) => ({
                 index: index,
                 project_name: project["Project name"],
             }));

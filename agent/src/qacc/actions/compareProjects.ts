@@ -72,7 +72,13 @@ export const compareProjectsAction: Action = {
         state = await runtime.updateRecentMessageState(state);
 
         try {
-            const allProjects = await fetchAllProjects();
+            let allProjects = [];
+            if (runtime.cacheManager.get("currentCSVData")) {
+                allProjects = await runtime.cacheManager.get("currentCSVData");
+                elizaLogger.success("Got data from cache Manager");
+            } else {
+                allProjects = await fetchAllProjects();
+            }
             elizaLogger.success("Successfully fetched projects for comparison");
 
             const projectsScored = [];

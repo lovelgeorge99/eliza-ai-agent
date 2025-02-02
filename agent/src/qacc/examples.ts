@@ -467,3 +467,94 @@ export const compareQACCProjectsExamples: ActionExample[][] = [
         },
     ],
 ];
+
+export const readCSVFileExamples: ActionExample[][] = [
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Can you read this CSV file for me?",
+                file: "data.csv",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll read and analyze the CSV file for you.",
+                action: "READ_CSV_FILE",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I've successfully read your CSV file. It contains 150 rows and 4 columns. The columns are: id, name, category, and value. Would you like to see a sample of the data?",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Parse this sales data CSV and tell me what's in it",
+                file: "sales_data.csv",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll parse and analyze your sales data CSV file.",
+                action: "READ_CSV_FILE",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I've parsed your sales data CSV. The file contains 200 sales records with 6 columns: date, product_id, quantity, price, customer_id, and region. Would you like me to show you some sample entries?",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Import this CSV file and show me what data it contains",
+                file: "metrics.csv",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll import and analyze the contents of your CSV file.",
+                action: "READ_CSV_FILE",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I've imported your CSV file. It contains 75 rows of metrics data with 5 columns: timestamp, metric_name, value, unit, and source. The data appears to be time-series metrics. Would you like to see the first few entries?",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Check what's in this CSV file",
+                file: "user_data.csv",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll examine the contents of your CSV file.",
+                action: "READ_CSV_FILE",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I've analyzed your CSV file. It contains user data with 300 records and 7 columns including: user_id, name, email, signup_date, last_login, status, and subscription_type. Would you like me to provide more details about the data structure?",
+            },
+        },
+    ],
+];
