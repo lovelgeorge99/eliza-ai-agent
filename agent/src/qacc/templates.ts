@@ -137,3 +137,29 @@ Calculate the scores and return them in JSON format. Example response:
 
 here is the the data {{projectData}}
 `;
+
+export const getProjectNamesForComparisonTemplate = `Respond with a JSON object containing the project names for comparison.
+From the user message extract at least two QACC project names they want to compare. If fewer than two project names are provided, ask the user to provide more names to compare projects.
+
+The response must include:
+- project_names: An array containing at least two QACC project names provided by the user.
+
+
+
+
+\\\\json
+{
+    "project_names": ["QACC Dashboard", "QACC-Arbitrage-Bot"]
+}
+\\\\
+\\\\json
+{
+    "project_names": ["QACC Dashboard", "QACC-Arbitrage-Bot", "Analytics Platform"]
+
+}
+\\\\
+
+
+
+{{recentMessages}} Extract the QACC project names from the most recent message.if you are not able to extract the project names ask the user again.
+Respond with a JSON markdown block containing the project_names`;

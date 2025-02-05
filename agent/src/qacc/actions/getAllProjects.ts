@@ -76,7 +76,7 @@ export const getAllProjects: Action = {
             // );
 
             const projects = allProjects?.map((project, index) => ({
-                index: index,
+                index: index + 1,
                 project_name: project["Project name"],
             }));
 

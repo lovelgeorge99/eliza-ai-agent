@@ -131,27 +131,27 @@ export const getFilteredProjects: Action = {
                 ),
             ];
 
-            responseText += "| No. | " + fieldsToDisplay.join(" | ") + " |\n";
-            responseText +=
-                "|-----|" +
-                fieldsToDisplay.map(() => "-------------").join("|") +
-                "|\n";
+            // responseText += "| No. | " + fieldsToDisplay.join(" | ") + " |\n";
+            // responseText +=
+            //     "|-----|" +
+            //     fieldsToDisplay.map(() => "-------------").join("|") +
+            //     "|\n";
 
             // Add table rows
-            const projectRows = filteredProjects
-                .map((project, index) => {
-                    let row = `| ${index + 1} | ${project.project_name} | `;
-                    row += validatedConditions
-                        .map(
-                            (condition) =>
-                                project[condition.field]?.toString() || "N/A"
-                        )
-                        .join(" | ");
-                    return row + " |";
-                })
-                .join("\n");
+            // const projectRows = filteredProjects
+            //     .map((project, index) => {
+            //         let row = `| ${index + 1} | ${project.project_name} | `;
+            //         row += validatedConditions
+            //             .map(
+            //                 (condition) =>
+            //                     project[condition.field]?.toString() || "N/A"
+            //             )
+            //             .join(" | ");
+            //         return row + " |";
+            //     })
+            //     .join("\n");
 
-            responseText += projectRows;
+            // responseText += projectRows;
 
             callback({
                 text: responseText,

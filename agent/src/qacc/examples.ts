@@ -558,3 +558,180 @@ export const readCSVFileExamples: ActionExample[][] = [
         },
     ],
 ];
+
+export const compareSpecificProjectsExamples: ActionExample[][] = [
+    // Direct comparison requests
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Compare QACC Dashboard with QACC-Arbitrage-Bot",
+                projectNames: ["QACC Dashboard", "QACC-Arbitrage-Bot"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll compare QACC Dashboard with QACC-Arbitrage-Bot.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Using 'vs' or 'versus'
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "QACC Dashboard vs Analytics Platform - which is better?",
+                projectNames: ["QACC Dashboard", "Analytics Platform"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll analyze QACC Dashboard versus Analytics Platform to determine which shows more promise.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Using 'and'
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Can you analyze QACC-Arbitrage-Bot and Analytics Platform?",
+                projectNames: ["QACC-Arbitrage-Bot", "Analytics Platform"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll perform a comparative analysis of QACC-Arbitrage-Bot and Analytics Platform.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Question format
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Which is performing better between QACC Dashboard and QACC-Arbitrage-Bot?",
+                projectNames: ["QACC Dashboard", "QACC-Arbitrage-Bot"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll evaluate the performance of QACC Dashboard and QACC-Arbitrage-Bot.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Multi-project comparison
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Please compare these three: QACC Dashboard, Analytics Platform and QACC-Arbitrage-Bot",
+                projectNames: [
+                    "QACC Dashboard",
+                    "Analytics Platform",
+                    "QACC-Arbitrage-Bot",
+                ],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll compare all three projects: QACC Dashboard, Analytics Platform, and QACC-Arbitrage-Bot.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Informal request
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "hey can u tell me how QACC Dashboard stacks up against Analytics Platform?",
+                projectNames: ["QACC Dashboard", "Analytics Platform"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll analyze how QACC Dashboard compares to Analytics Platform.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Performance comparison
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Show me the performance metrics for QACC-Arbitrage-Bot compared to QACC Dashboard",
+                projectNames: ["QACC-Arbitrage-Bot", "QACC Dashboard"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll compare the performance metrics of QACC-Arbitrage-Bot and QACC Dashboard.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Evaluation request
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Evaluate Analytics Platform and QACC-Arbitrage-Bot side by side",
+                projectNames: ["Analytics Platform", "QACC-Arbitrage-Bot"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll provide a side-by-side evaluation of Analytics Platform and QACC-Arbitrage-Bot.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Detailed analysis request
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Give me a detailed comparison between QACC Dashboard and Analytics Platform",
+                projectNames: ["QACC Dashboard", "Analytics Platform"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll create a detailed comparison between QACC Dashboard and Analytics Platform.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+    // Metrics-focused request
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "What are the key differences between QACC-Arbitrage-Bot and QACC Dashboard?",
+                projectNames: ["QACC-Arbitrage-Bot", "QACC Dashboard"],
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll analyze the key differences between QACC-Arbitrage-Bot and QACC Dashboard.",
+                action: "COMPARE_SPECIFIC_QACC_PROJECTS",
+            },
+        },
+    ],
+];
