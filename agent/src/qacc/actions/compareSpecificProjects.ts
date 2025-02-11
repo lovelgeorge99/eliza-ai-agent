@@ -18,25 +18,43 @@ function findProjectsByNames(
     allProjects: any[],
     projectNames: string[]
 ): any[] {
-    return projectNames.map((name) => {
+    return projectNames.reduce((result: any[], name) => {
         const project = allProjects.find(
             (p) => p["Project name"].toLowerCase() === name.toLowerCase()
         );
         if (!project) {
-            throw new Error(`Project "${name}" not found`);
+            elizaLogger.error(`Project "${name}" not found`);
+            return result; // Skip this project and move to the next
         }
-        return project;
-    });
+
+        result.push(project);
+        return result;
+    }, []);
 }
 
-// Helper function to generate all possible pairs from an array of projects
-function generateAllPairs(projects: any[]): [any, any][] {
+function generateRandomPairs(projects: any[]): [any, any][] {
     const pairs: [any, any][] = [];
-    for (let i = 0; i < projects.length - 1; i++) {
-        for (let j = i + 1; j < projects.length; j++) {
-            pairs.push([projects[i], projects[j]]);
-        }
+    const remainingProjects = [...projects];
+
+    while (remainingProjects.length >= 2) {
+        const randomIndex1 = Math.floor(
+            Math.random() * remainingProjects.length
+        );
+        const project1 = remainingProjects.splice(randomIndex1, 1)[0];
+
+        const randomIndex2 = Math.floor(
+            Math.random() * remainingProjects.length
+        );
+        const project2 = remainingProjects.splice(randomIndex2, 1)[0];
+
+        pairs.push([project1, project2]);
     }
+
+    // Handle odd number of projects
+    if (remainingProjects.length === 1) {
+        pairs.push([remainingProjects[0], projects[projects.length - 1]]);
+    }
+
     return pairs;
 }
 
@@ -69,12 +87,12 @@ export const compareSpecificProjectsAction: Action = {
             template: getProjectNamesForComparisonTemplate,
         });
 
-        // context -> content
         const content = await generateMessageResponse({
             runtime,
             context: getProjectNamesContext,
             modelClass: ModelClass.MEDIUM,
         });
+
         console.log(content, "content");
 
         try {
@@ -91,14 +109,17 @@ export const compareSpecificProjectsAction: Action = {
                 allProjects = await fetchAllProjects();
             }
 
+            elizaLogger.success("Got All Project");
+
             // Find the specified projects
             const selectedProjects = findProjectsByNames(
                 allProjects,
                 projectNames
             );
+            elizaLogger.success("Got Selected Projects");
 
             // Generate all possible pairs for comparison
-            const projectPairs = generateAllPairs(selectedProjects);
+            const projectPairs = generateRandomPairs(selectedProjects);
 
             const projectsScored = [];
 

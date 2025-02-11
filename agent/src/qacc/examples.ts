@@ -735,3 +735,48 @@ export const compareSpecificProjectsExamples: ActionExample[][] = [
         },
     ],
 ];
+
+export const updateProjectConfigsExamples: ActionExample[][] = [
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Can you change the configs for the project comparison... Marketing:0.85 Product:90 Team:75 Financial:80",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll update the project comparison configurations with your new values.",
+                action: "UPDATE_PROJECT_CONFIGS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "The project comparison configurations have been updated successfully with your specified values.",
+            },
+        },
+    ],
+    [
+        {
+            user: "{{user1}}",
+            content: {
+                text: "Update the project comparison scores to Marketing:70 Product:85 Team:80 Financial:75",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "I'll modify the project comparison scores according to your specifications.",
+                action: "UPDATE_PROJECT_CONFIGS",
+            },
+        },
+        {
+            user: "{{agent}}",
+            content: {
+                text: "The project comparison scores have been successfully updated with your new values.",
+            },
+        },
+    ],
+];

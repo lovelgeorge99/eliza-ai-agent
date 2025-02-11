@@ -72,6 +72,7 @@ export const generateCompareTemplate = (project1, project2) => {
         "project2": "${project2["Project name"]}",
 
         "selected_project": "",
+        "not_selected_project":"",
 
         "detailed_reasoning": "",
         "risk_factors": "",
@@ -128,6 +129,7 @@ export const generateCompareTemplate = (project1, project2) => {
         "project2": "${project2["Project name"]}"
 
         "selected_project": "Name of the better project",
+        "not_selected_project":"Name of the other project",
 
         "detailed_reasoning": "Provide a comprehensive analysis with specific metrics, comparing actual values and explaining why the selected project is superior. Include specific numbers and percentages where possible.",
         "risk_factors": "List potential risks or concerns for the selected project",
@@ -138,7 +140,7 @@ export const generateCompareTemplate = (project1, project2) => {
     `;
 };
 
-export const generateCompareTemplateTest = (project1, project2) => {
+export const generateCompareTemplateTest = (project1, project2, configs?) => {
     return `You are evaluating two blockchain projects to determine which one shows more promise. Your evaluation should focus on identifying both high-performing and promising early-stage projects using a weighted scoring system across four key areas.
 
     If you encounter any error just return empty values
@@ -147,6 +149,7 @@ export const generateCompareTemplateTest = (project1, project2) => {
         "project1": "${project1["Project name"]}",
         "project2": "${project2["Project name"]}",
         "selected_project": "",
+         "not_selected_project":"",
         "detailed_reasoning": "",
         "risk_factors": "",
         "recommendation_confidence": "",
@@ -261,6 +264,7 @@ export const generateCompareTemplateTest = (project1, project2) => {
         "project1": "${project1["Project name"]}",
         "project2": "${project2["Project name"]}",
         "selected_project": "Name of the project with more promise",
+        "not_selected_project":"Name of the other project",
         "detailed_reasoning": "Provide a comprehensive analysis across all four categories (Marketing, Product, Team, Finance). Include specific metrics and comparisons where possible. Explain both current performance and future potential.",
         "risk_factors": "List potential risks or concerns for the selected project",
         "recommendation_confidence": "High/Medium/Low",

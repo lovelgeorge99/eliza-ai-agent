@@ -87,7 +87,13 @@ export const compareProjectsAction: Action = {
                 projectPairs.map(async (pair, index) => {
                     const template = generateCompareTemplateTest(
                         pair[0],
-                        pair[1]
+                        pair[1],
+                        {
+                            marketing: 40,
+                            product: 30,
+                            team: 20,
+                            financial: 10,
+                        }
                     );
 
                     try {
