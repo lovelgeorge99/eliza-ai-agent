@@ -143,6 +143,12 @@ export const compareSpecificProjectsAction: Action = {
                             modelClass: ModelClass.MEDIUM,
                         });
 
+                        const res = {
+                            ...analysisResponse,
+                            first_project: pair[0],
+                            second_project: pair[1],
+                        };
+
                         console.log(
                             "Compared " +
                                 pair[0]["Project name"] +
@@ -150,7 +156,7 @@ export const compareSpecificProjectsAction: Action = {
                                 pair[1]["Project name"]
                         );
 
-                        projectsScored.push(analysisResponse);
+                        projectsScored.push(res);
                     } catch (e) {
                         console.log(
                             "Error comparing",
